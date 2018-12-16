@@ -1,0 +1,35 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Produktu</mat-card-title>
+    <mat-card-subtitle>Dodawanie / Edycja</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <section class="form-section">
+      <form>
+        <div class="form-row">
+          <mat-form-field class="half-width">
+            <input [(ngModel)]="product.name" name="name" matInput placeholder="Nazwa produktu">
+          </mat-form-field>
+          <mat-form-field class="half-width">
+            <mat-select placeholder="Kategoria produktu" [(ngModel)]="product.category.id" name="category">
+              <mat-option *ngFor="let category of categoriesDict" [value]="category.id">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field class="full-width">
+            <textarea [(ngModel)]="product.description" name="description" matInput placeholder="Opis produktu"></textarea>
+          </mat-form-field>
+        </div>
+      </form>
+    </section>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="button-row">
+      <button (click)="back()" mat-flat-button color="accent">Wróć</button>
+      <button (click)="saveProduct()" mat-flat-button color="primary">Zapisz</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

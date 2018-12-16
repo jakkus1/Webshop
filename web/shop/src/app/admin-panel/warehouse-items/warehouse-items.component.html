@@ -1,0 +1,30 @@
+<section class="action-buttons">
+  <button mat-stroked-button color="primary" routerLink="add">Dodaj przedmiot do magazynu</button>
+</section>
+<table class="table-details">
+  <tr>
+    <th>Id</th>
+    <th>Nazwa</th>
+    <th>Cena</th>
+    <th>Ilość w magazynie</th>
+    <th>Akcje</th>
+  </tr>
+  <tr *ngFor="let warehouseItem of warehouseItems; let rowIndex = index">
+    <td>
+      {{ warehouseItem.id }}
+    </td>
+    <td>
+      {{ warehouseItem.product.name }}
+    </td>
+    <td>
+      {{ warehouseItem.price }}
+    </td>
+    <td>
+      {{ warehouseItem.quantity }}
+    </td>
+    <td>
+      <button (click)="removeWarehouseItem(warehouseItem.id, rowIndex)" matTooltip="Usuń przedmiot z magazynu" mat-button><mat-icon>delete</mat-icon></button>
+      <button [routerLink]="['/', 'admin-panel', 'warehouse-items', 'edit', warehouseItem.id]" matTooltip="Edytuj stan magazynowy" mat-button><mat-icon>edit</mat-icon></button>
+    </td>
+  </tr>
+</table>
